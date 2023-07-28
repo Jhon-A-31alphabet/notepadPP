@@ -1,17 +1,27 @@
 from tkinter import *
-
 from fuctions import *
 
-print("executing")
 
 
 
 class ui:
+
     def __init__(self,master):
-        self.caja_texto = Text(master,borderwidth=5,padx=10,pady=0,font=60)
+        
+
+
+        self.scrollbar = Scrollbar(master)
+        self.scrollbar.pack(side= RIGHT,fill = Y)
+
+        self.caja_texto = Text(master,borderwidth=5,padx=10,pady=0,font=60,yscrollcommand=self.scrollbar.set)
        
         self.caja_texto.config(font=('Arial', 16))
-        self.caja_texto.place(x=0,y=30)
+        self.caja_texto.place(x=10,y=30)
+
+        self.scrollbar.config(command=self.caja_texto.yview)
+
+        
+
 
         self.boton_guardar = Button(master,text="Guardar",command = lambda:guardar(self.caja_texto))
         self.boton_guardar.place(x=10,y=1)
@@ -25,15 +35,21 @@ class ui:
         self.boton_claro =Button(master,text = "claro",command=lambda:modo_claro(self.caja_texto,master))
         self.boton_claro.place(x=170,y=1)
 
+
+        self.open_button = Button(master,text="Abrir",command=lambda:abrir_archivo(self.caja_texto))
+        self.open_button.place(x=210,y=1)
         
 #-----------------------------------------------------------------------------------------instancias---------------------
 
+
+
+        
 
 try:
     root = Tk()
     root.title("Pynotepad")
     root.config(bg="white")
-    root.geometry("1080x700")
+    root.geometry("1089x600")
     ar = ui(root)
 except:
     root.showerror("invalido","hubo un error")

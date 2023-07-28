@@ -1,18 +1,17 @@
 
-
 from tkinter import *
 from tkinter import filedialog
 from tkinter import font
 from tkinter.colorchooser import askcolor
-
+from tkinter import messagebox
 
 
 
 
 def guardar(x):
-    a = filedialog.asksaveasfile(defaultextension=".txt",filetypes=[("textfile",".txt"),("pdf files",".pdf")])
+    a = filedialog.asksaveasfile(defaultextension=".txt",filetypes=[("textfile",".txt")])
     b = f"{a}.txt"
-    file_Text =x.get(1.0,END)
+    file_Text =x.get(1.0,"END") # 1.0 PRINCIPIO
     a.write(file_Text)
     a.close()
 
@@ -43,8 +42,18 @@ def personalizar_fondo(x,y):
 
 
 
-    #----------------
-
+def abrir_archivo(text_widget):
+    
+        file_path = filedialog.askopenfilename()
+        if file_path:
+            if file_path.endswith(".txt"):
+                with open(file_path, 'r') as file:
+                    content = file.read()
+                    text_widget.delete('1.0',END)  
+                    text_widget.insert('1.0', content)
+        
+        
+     
 
 
 
