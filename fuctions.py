@@ -9,7 +9,7 @@ from tkinter import messagebox
 
 
 def guardar(x):
-    a = filedialog.asksaveasfile(defaultextension=".txt",filetypes=[("textfile",".txt")])
+    a = filedialog.asksaveasfile(defaultextension=".txt",filetypes=[("textfile",".txt")]) # solamenta abrira archivos de text
     b = f"{a}.txt"
     file_Text =x.get(1.0,"END") # 1.0 PRINCIPIO
     a.write(file_Text)
@@ -18,7 +18,7 @@ def guardar(x):
 
 
 def oscuro(x,y):
-    ventana = y.config(bg="gray")
+    ventana = y.config(bg="white")
     caja_texto = x.config(bg ="black",fg="white")
     
     barra_texto = x.config(insertbackground = "white")
