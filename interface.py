@@ -15,9 +15,6 @@ class ui:
 
         self.scrollbar.config(command=self.caja_texto.yview)
 
-        
-
-
         self.boton_guardar = Button(master,text="Guardar",command = lambda:guardar(self.caja_texto),relief="ridge")
         self.boton_guardar.place(x=10,y=1)
 
@@ -35,10 +32,6 @@ class ui:
         self.open_button.place(x=210,y=1)
         
 #-----------------------------------------------------------------------------------------instancias---------------------
-
-
-
-        
 
 try:
     root = Tk()
