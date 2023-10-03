@@ -18,7 +18,7 @@ def guardar(x):
 
 
 def oscuro(x,y):
-    ventana = y.config(bg="white")
+    ventana = y.config(bg="black")
     caja_texto = x.config(bg ="black",fg="white")
     
     barra_texto = x.config(insertbackground = "white")

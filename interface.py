@@ -8,9 +8,9 @@ class ui:
         self.scrollbar = Scrollbar(master)
         self.scrollbar.pack(side= RIGHT,fill = Y)
 
-        self.caja_texto = Text(master,borderwidth=5,padx=10,pady=0,font=60,yscrollcommand=self.scrollbar.set,relief="ridge")
+        self.caja_texto = Text(master,borderwidth=5,padx=10,pady=0,font=60,yscrollcommand=self.scrollbar.set,relief="groove")
        
-        self.caja_texto.config(font=('Arial', 16))
+        self.caja_texto.config(font=('Arial', 12))
         self.caja_texto.place(x=10,y=30)
 
         self.scrollbar.config(command=self.caja_texto.yview)
@@ -31,14 +31,17 @@ class ui:
         self.open_button = Button(master,text="Abrir",command=lambda:abrir_archivo(self.caja_texto),relief="ridge")
         self.open_button.place(x=210,y=1)
         
-#-----------------------------------------------------------------------------------------instancias---------------------
+#---------------------------------------------------------------------instancias---------------------
 
 try:
     root = Tk()
+    
     root.title("Pynotepad")
     root.config(bg="white")
-    root.geometry("1030x620")
+    root.geometry("790x470")
+    root.resizable(False,False)
     ar = ui(root)
+    
 except:
     root.showerror("invalido","hubo un error")
 
