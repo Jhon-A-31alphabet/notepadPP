@@ -4,11 +4,10 @@ from tkinter import filedialog
 from tkinter import font
 from tkinter.colorchooser import askcolor
 from tkinter import messagebox
+from tkinter import ttk
 
 
-
-
-def guardar(x):
+def guardar(x:None) ->None:
     a = filedialog.asksaveasfile(defaultextension=".txt",filetypes=[("textfile",".txt")]) # solamenta abrira archivos de text
     b = f"{a}.txt"
     file_Text =x.get(1.0,"END") # 1.0 PRINCIPIO
@@ -17,7 +16,7 @@ def guardar(x):
 
 
 
-def oscuro(x,y):
+def oscuro(x,y) -> None:
     ventana = y.config(bg="black")
     caja_texto = x.config(bg ="black",fg="white")
     
@@ -52,9 +51,17 @@ def abrir_archivo(text_widget):
                     text_widget.delete('1.0',END)  
                     text_widget.insert('1.0', content)
         
-        
-     
 
+
+def copiar_texto(texto,master):
+    contenido = texto.get("1.0", "end-1c")  # Obtiene el contenido de la caja de texto
+
+    
+    master.clipboard_clear()  # Limpia el portapapeles
+    master.clipboard_append(contenido)  # Agrega el contenido al portapapeles
+    master.update()
+    
+     
 
 
    
