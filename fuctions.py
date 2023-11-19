@@ -5,6 +5,7 @@ from tkinter import font
 from tkinter.colorchooser import askcolor
 from tkinter import messagebox
 from tkinter import ttk
+import cryptocode
 
 
 def guardar(x:None) ->None:
@@ -60,12 +61,24 @@ def copiar_texto(texto,master):
     master.clipboard_clear()  # Limpia el portapapeles
     master.clipboard_append(contenido)  # Agrega el contenido al portapapeles
     master.update()
-    
+   
      
 
 
    
 
-   
+
+def encode_String(string_,key,):
+
+    file =filedialog.asksaveasfile(defaultextension=".txt",filetypes=[("textfile",".txt")])
+    text_file =f"{file}.txt"
+    text_of_file = string_.get(1.0,'END')
+    file.write(text_of_file)
+    file.close()
 
 
+
+
+def decode_String(string_,key):
+    de_s = cryptocode.decrypt(string_,key)
+    return de_s
