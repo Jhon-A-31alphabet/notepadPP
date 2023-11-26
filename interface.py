@@ -38,14 +38,11 @@ class ui:
         self.open_button.place(x=210,y=1)
 
         self.clipboard_button = Button(master,text="copiar",relief="ridge",command=lambda:copiar_texto(self.caja_texto,master))
-        self.clipboard_button.place(x=250,y=1)
+        self.clipboard_button.place(x=245,y=1)
 
 
-        self.button_encript =Button(master,text="Cifrar",command=lambda:encode_String(self.caja_texto,"adeda"),relief="ridge")
-        self.button_encript.place(x= 290,y=1)
-
-
-        
+        self.fecha_hora =Button(master,text="Fecha y hora",command=lambda:get_date(self.caja_texto),relief="ridge")
+        self.fecha_hora.place(x= 290,y=1)
 
         
 
