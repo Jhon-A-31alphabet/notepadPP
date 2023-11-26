@@ -11,7 +11,7 @@ import time
 def guardar(x:None) ->None:
     a = filedialog.asksaveasfile(defaultextension=".txt",filetypes=[("textfile",".txt")]) # solamenta abrira archivos de text
     b = f"{a}.txt"
-    file_Text =x.get(1.0,"END") # 1.0 PRINCIPIO
+    file_Text =x.get(1.0,"end-1c") # 1.0 PRINCIPIO
     a.write(file_Text)
     a.close()
 
