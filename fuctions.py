@@ -31,15 +31,6 @@ def modo_claro(x,y):
     barra_texto = x.config(insertbackground = "black")
 
 
-def personalizar_fondo(x,y):
-    fondo_color =askcolor(title="color de fondo")
-    caja_Texto_color =askcolor(title="caja de texto")
-    fuente_caja_texto = askcolor(title="fuente")
-
-    x.configure(bg=fondo_color[1])
-    y.configure(bg=caja_Texto_color[1])
-    y.configure(fg=fuente_caja_texto[1])
-
 
 
 def abrir_archivo(text_widget):
