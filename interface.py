@@ -1,38 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from basics import *
-
-
-class password_window:
-    def __init__(self,main) -> None:
-        self.main = main
-    
-    def run_password_window(self):
-        self.win_pas= Toplevel(self.main)
-        
-        self.win_pas.geometry("610x300")
-        self.win_pas.resizable(False,False)
-        self.win_pas.title("codigo aleatorio")
-        
-        self.label__ = Label(self.win_pas,text="Tamaño del codigo",font="Terminal")
-        self.label__.place(x=95,y=10)
-        
-        self._list_box_numbers = Spinbox(self.win_pas,
-                                        from_=4,to=84,increment=1,
-                                        width=10)
-        
-        self._list_box_numbers.place(x=10,y=10)
-        self.scroll__ = Scrollbar(self.win_pas)
-        
-        self.scroll__.pack(side=RIGHT, fill=Y)
-        
-        self.text_code =Text(self.win_pas,borderwidth=1,padx=5,pady=5,font=5,yscrollcommand=self.scroll__.set)
-        
-        self.text_code.config(font=("Arial",9))
-        
-        self.text_code.place(x=10,y=40)
-        self.scroll__.config(command=self.text_code.yview)
-        
+import password_gen
 
 
 
@@ -41,7 +10,7 @@ class password_window:
 class ui:
     
     def __init__(self, master):
-        self.passw_window=password_window(master)
+        self.passw_window=password_gen.password_window(master)
 
         # Barra de menú
         self.menu_bar = Menu(master)
@@ -84,11 +53,9 @@ class ui:
 
         self.scrollbar.config(command=self.caja_texto.yview)
         
-        #---------------------------------------------------------------------instancias---------------------
+      
 
 
-        
-        
 
 try:
     root = Tk()
