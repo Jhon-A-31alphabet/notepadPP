@@ -18,7 +18,7 @@ class password_window:
         self.label__.place(x=95,y=10)
         
         self._list_box_numbers = Spinbox(self.win_pas,
-                                        from_=4,to=100,increment=1,
+                                        from_=4,to=84,increment=1,
                                         width=10)
         
         self._list_box_numbers.place(x=10,y=10)

@@ -9,8 +9,9 @@ class passwords:
     
     def generate_pass(self):
         pass__= random.sample(self.character,k=self.size)
-        return pass__
-
+        print(len(self.character))
+        code ="".join(pass__)
+        return code
 
 
 
