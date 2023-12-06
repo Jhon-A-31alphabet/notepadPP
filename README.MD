@@ -45,4 +45,4 @@ This project is an interactive notepad developed with Tkinter that goes beyond b
 
 
 ## System Requirements
-You dont need external libraries for execute this project. It was made only with standar libraries
+You dont need external libraries for execute this project. It was made only with standard libraries
