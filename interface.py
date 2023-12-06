@@ -4,57 +4,50 @@ from basics import *
 import password_gen
 
 
-
-
-
-class ui:
+class UI:
     
     def __init__(self, master):
-        self.passw_window=password_gen.password_window(master)
+        self.password_window = password_gen.PasswordWindow(master)
 
-        # Barra de menú
+        # Menu Bar
         self.menu_bar = Menu(master)
         master.config(menu=self.menu_bar)
 
-        # Menú Archivo
+        # File Menu
         self.file_menu = Menu(self.menu_bar, tearoff=0)
-        self.file_menu.add_command(label="Abrir", command=lambda: abrir_archivo(self.caja_texto))
+        self.file_menu.add_command(label="Open", command=lambda: open_file(self.text_box))
         self.file_menu.add_separator()
-        self.file_menu.add_command(label="Guardar", command=lambda: guardar(self.caja_texto))
-        self.file_menu.add_command(label="Salir", command=master.quit)
-        self.menu_bar.add_cascade(label="Archivo", menu=self.file_menu)
+        self.file_menu.add_command(label="Save", command=lambda: save_text_to_file(self.text_box))
+        self.file_menu.add_command(label="Exit", command=master.quit)
+        self.menu_bar.add_cascade(label="File", menu=self.file_menu)
 
-        # Menú Editar
+        # Edit Menu
         self.edit_menu = Menu(self.menu_bar, tearoff=0)
-        self.edit_menu.add_command(label="Copiar", command=lambda: copiar_texto(self.caja_texto, master))
-        self.menu_bar.add_cascade(label="Editar", menu=self.edit_menu)
+        self.edit_menu.add_command(label="Copy", command=lambda: copy_text_to_clipboard(self.text_box, master))
+        self.menu_bar.add_cascade(label="Edit", menu=self.edit_menu)
 
-        # Menú temas
+        # View Menu
         self.view_menu = Menu(self.menu_bar, tearoff=0)
-        self.view_menu.add_command(label="Modo Noche", command=lambda: oscuro(self.caja_texto, master))
-        self.view_menu.add_command(label="Modo Claro", command=lambda: modo_claro(self.caja_texto, master))
-        self.menu_bar.add_cascade(label="Temas", menu=self.view_menu)
+        self.view_menu.add_command(label="Dark Mode", command=lambda: dark_mode(self.text_box, master))
+        self.view_menu.add_command(label="Light Mode", command=lambda: light_mode(self.text_box, master))
+        self.menu_bar.add_cascade(label="Themes", menu=self.view_menu)
 
-        # Menú Herramientas
+        # Tools Menu
         self.tools_menu = Menu(self.menu_bar, tearoff=0)
-        self.tools_menu.add_command(label="Fecha y hora", command=lambda:get_date(self.caja_texto))
-        self.tools_menu.add_command(label="Contraseña aleatoria",command=lambda:self.passw_window.run_password_window())
+        self.tools_menu.add_command(label="Date and Time", command=lambda: get_date(self.text_box))
+        self.tools_menu.add_command(label="Random Password", command=lambda: self.password_window.run_password_window())
+        self.menu_bar.add_cascade(label="Tools", menu=self.tools_menu)
 
-        self.menu_bar.add_cascade(label="Herramientas", menu=self.tools_menu)
-
-        # Caja de texto
+        # Text Box
         self.scrollbar = Scrollbar(master)
         self.scrollbar.pack(side=RIGHT, fill=Y)
 
-        self.caja_texto = Text(master, borderwidth=1, padx=10, pady=0, font=60, yscrollcommand=self.scrollbar.set,
-                               relief="flat")
-        self.caja_texto.config(font=('Times New Roman', 12))
-        self.caja_texto.place(x=10, y=10)
+        self.text_box = Text(master, borderwidth=1, padx=10, pady=0, font=60, yscrollcommand=self.scrollbar.set,
+                             relief="flat")
+        self.text_box.config(font=('Times New Roman', 12))
+        self.text_box.place(x=10, y=10)
 
-        self.scrollbar.config(command=self.caja_texto.yview)
-        
-      
-
+        self.scrollbar.config(command=self.text_box.yview)
 
 
 try:
@@ -64,10 +57,10 @@ try:
     root.config(bg="white")
     root.geometry("690x470")
     root.resizable(False, False)
-    ar = ui(root)
+    ui_instance = UI(root)
 
 except Exception as e:
-    root.showerror("Invalido", f"Hubo un error: {e}")
+    root.showerror("Invalid", f"There was an error: {e}")
 
 finally:
     root.mainloop()
