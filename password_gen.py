@@ -2,64 +2,67 @@ import random
 import string
 from tkinter import *
 
-class passwords:
-    def __init__(self,size) -> str:
+class Passwords:
+    def __init__(self, size) -> str:
         self.size: int = size
-        self.character :tuple = string.ascii_letters + string.punctuation
+        self.characters: tuple = string.ascii_letters + string.punctuation
     
-    def generate_pass(self):
-        pass__= random.sample(self.character,k=self.size)
-        print(len(self.character))
-        code ="".join(pass__)
+    def generate_password(self):
+        password = random.sample(self.characters, k=self.size)
+        code = "".join(password)
         return code
 
 
 
 
-class password_window:
-    def __init__(self,main) -> None:
+def insert_password(text, size):
+    password_instance = Passwords(size)
+    generated_code = password_instance.generate_password()
+    text.insert("1.0", generated_code)
+
+def copy_password(text_widget, master) -> None:
+    content = text_widget.get("1.0", "end-1c")
+    master.clipboard_clear()
+    master.clipboard_append(content)
+    master.update()
+
+
+
+
+class PasswordWindow:
+    def __init__(self, main) -> None:
         self.main = main
-    
+
     def run_password_window(self):
-        #window
-        self.win_pas= Toplevel(self.main)
+        # Window
+        self.win_pass = Toplevel(self.main)
+        self.win_pass.geometry("550x290")
+        self.win_pass.resizable(False, False)
+        self.win_pass.title("Password Generator")
         
-        self.win_pas.geometry("550x290")
-        self.win_pas.resizable(False,False)
-        self.win_pas.title("codigo aleatorio")
+        # Widgets
+        self.label_size = Label(self.win_pass, text="Password Length", font=("Arial", 10))
+        self.label_size.place(x=95, y=10)
         
-        #widgets
-         
-        self.label__ = Label(self.win_pas,text="Tamaño del codigo",font=("Arial",10))
-        self.label__.place(x=95,y=10)
-        
-        #list box
-        self._list_box_numbers = Spinbox(self.win_pas,
-                                        from_=4,to=84,increment=1,
+        # List box
+        self.list_box_numbers = Spinbox(self.win_pass,
+                                        from_=4, to=84, increment=1,
                                         width=10)
+        self.list_box_numbers.place(x=10, y=10)
+        self.scroll_bar = Scrollbar(self.win_pass)
+        self.scroll_bar.pack(side=RIGHT, fill=Y)  # Scrollbar
         
+        # Text widget
+        self.text_password = Text(self.win_pass, borderwidth=1, padx=5, pady=5, font=5, yscrollcommand=self.scroll_bar.set, height=10, width=70)
+        self.text_password.config(font=("Helvetica", 9))  # Text font
         
-        self._list_box_numbers.place(x=10,y=10)
-        self.scroll__ = Scrollbar(self.win_pas)
+        # Get button
+        self.button_get_password = Button(self.win_pass, text="Generate", command=lambda: insert_password(self.text_password, int(self.list_box_numbers.get())))
+        self.button_get_password.place(x=230, y=10)
         
-        self.scroll__.pack(side=RIGHT, fill=Y) #scrollbar
+        self.text_password.place(x=10, y=50)  # Text place
         
-        self.text_code =Text(self.win_pas,borderwidth=1,padx=5,pady=5,font=5,yscrollcommand=self.scroll__.set,height=10,width=70) #text widget
-        
-        self.text_code.config(font=("Helvetica",9)) #text font
-        #get button
-        self.button_get_code = Button(self.win_pas,text="Generar")
-        self.button_get_code.place(x=250,y=10)
-        
-        self.text_code.place(x=10,y=50) #text place   
-        
-       #copy button
-        self.button_copy = Button(self.win_pas,text="Copiar")
-        self.button_copy.place(x=300,y=10)
-        self.scroll__.config(command=self.text_code.yview)
-        
-        
-
-
-        
-        
+        # Copy button
+        self.button_copy = Button(self.win_pass, text="Copy", command=lambda: copy_password(self.text_password, self.main))
+        self.button_copy.place(x=300, y=10)
+        self.scroll_bar.config(command=self.text_password.yview)
