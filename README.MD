@@ -11,9 +11,7 @@ An interactive notepad with additional features for managing passwords, display 
   - [Tools](#tools)
 - [Screenshots](#screenshots)
 - [System Requirements](#system-requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contribution](#contribution)
+- [Contribution](#contribution) 
 - [License](#license)
 
 ## Introduction
@@ -42,7 +40,17 @@ This project is an interactive notepad developed with Tkinter that goes beyond b
 
 ## Screenshots
 
-
+![Main](SCREEN/main.png)
+![Main](SCREENSHOTS/light_and_night_mode.png)
+![Main](SCREENSHOTS/file_section.png)
+![Main](SCREENSHOTS/dates_and_pass_buttons.png)
+![Main](SCREENSHOTS/password_generator.png)
+![Main](SCREENSHOTS/copy_func.png)
+![Main](SCREENSHOTS/dark_mode.png)
 
 ## System Requirements
-You dont need external libraries for execute this project. It was made only with standard libraries
+You dont need external libraries for execute this project. It was made only with standard libraries.
+
+## Contribution
+Chatme on discord: **782631037775118347**  **Angel of Death**
+
