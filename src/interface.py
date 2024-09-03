@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import ttk
+import password_gen as password_gen
 from basics import *
-import password_gen
+
+
 
 
 class UI:
@@ -28,8 +30,8 @@ class UI:
 
         # View Menu
         self.view_menu = Menu(self.menu_bar, tearoff=0)
-        self.view_menu.add_command(label="Dark Mode", command=lambda: dark_mode(self.text_box, master))
-        self.view_menu.add_command(label="Light Mode", command=lambda: light_mode(self.text_box, master))
+        self.view_menu.add_command(label="Dark Mode", command=lambda:theme_conf.darkmode(self.text_box,master))
+        self.view_menu.add_command(label="Light Mode", command=lambda: theme_conf.light_mode(self.text_box, master))
         self.menu_bar.add_cascade(label="Themes", menu=self.view_menu)
 
         # Tools Menu
@@ -42,9 +44,12 @@ class UI:
         self.scrollbar = Scrollbar(master)
         self.scrollbar.pack(side=RIGHT, fill=Y)
 
+
+
+
         self.text_box = Text(master, borderwidth=1, padx=10, pady=0, font=60, yscrollcommand=self.scrollbar.set,
-                             relief="flat")
-        self.text_box.config(font=('Times New Roman', 12))
+                             relief="flat",bg= read_config_file.datos["BG"],fg=read_config_file.datos["FG"])
+        self.text_box.config(font=('Times New Roman', 12),insertbackground="white")
         self.text_box.place(x=10, y=10)
 
         self.scrollbar.config(command=self.text_box.yview)

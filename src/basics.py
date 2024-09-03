@@ -5,6 +5,62 @@ from tkinter.colorchooser import askcolor
 from tkinter import messagebox
 from tkinter import ttk
 import time
+import json
+
+
+class read_config_file:
+    
+     with open('config.json', 'r') as archivo:
+        datos = json.load(archivo)
+    
+
+class theme_conf:
+    
+    @staticmethod
+    def darkmode(text,window):
+        
+
+        with open('config.json', 'r') as archivo:
+            datos = json.load(archivo)
+            datos['FG'] = 'white'
+            datos['BG'] ='black'
+
+        with open('config.json', 'w') as archivo:
+
+            json.dump(datos, archivo, indent=4)
+        
+        text.config(bg=datos['BG'],fg=datos['FG'],insertbackground="white")
+        window.config(bg=datos['BG'])
+
+    @staticmethod
+    def light_mode(text,window):
+        
+
+        with open('config.json', 'r') as archivo:
+            datos = json.load(archivo)
+            datos['FG'] = 'black'
+            datos['BG'] ='white'
+
+        with open('config.json', 'w') as archivo:
+
+            json.dump(datos, archivo, indent=4)
+        
+        text.config(bg=datos['BG'],fg=datos['FG'],insertbackground="black")
+        window.config(bg=datos['BG'])
+
+
+
+
+
+
+            
+
+    
+    
+
+    
+
+
 
 
 def save_text_to_file(text_widget: None) -> None:
@@ -15,16 +71,6 @@ def save_text_to_file(text_widget: None) -> None:
     file_dialog.close()
 
 
-def dark_mode(text_widget, window) -> None:
-    window.config(bg="black")
-    text_widget.config(bg="black", fg="white")
-    text_widget.config(insertbackground="white")
-
-
-def light_mode(text_widget, window) -> None:
-    window.config(bg="white")
-    text_widget.config(bg="white", fg="black")
-    text_widget.config(insertbackground="black")
 
 
 def open_file(text_widget) -> None:
