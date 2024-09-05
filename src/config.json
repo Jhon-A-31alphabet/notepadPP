@@ -1,4 +1,5 @@
 {
-    "BG": "white",
-    "FG": "black"
+    "BG": "black",
+    "FG": "white",
+    "CURSOR": "white"
 }

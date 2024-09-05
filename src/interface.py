@@ -36,8 +36,11 @@ class UI:
 
         # Tools Menu
         self.tools_menu = Menu(self.menu_bar, tearoff=0)
+        
         self.tools_menu.add_command(label="Date and Time", command=lambda: get_date(self.text_box))
+        
         self.tools_menu.add_command(label="Random Password", command=lambda: self.password_window.run_password_window())
+        
         self.menu_bar.add_cascade(label="Tools", menu=self.tools_menu)
 
         # Text Box
@@ -48,8 +51,8 @@ class UI:
 
 
         self.text_box = Text(master, borderwidth=1, padx=10, pady=0, font=60, yscrollcommand=self.scrollbar.set,
-                             relief="flat",bg= read_config_file.datos["BG"],fg=read_config_file.datos["FG"])
-        self.text_box.config(font=('Times New Roman', 12),insertbackground="white")
+                             relief="flat",bg= read_config_file.data["BG"],fg=read_config_file.data["FG"])
+        self.text_box.config(font=('Times New Roman', 12),insertbackground=read_config_file.data["CURSOR"])
         self.text_box.place(x=10, y=10)
 
         self.scrollbar.config(command=self.text_box.yview)
@@ -59,7 +62,7 @@ try:
     root = Tk()
 
     root.title("Pynotepad")
-    root.config(bg="white")
+    root.config(bg=read_config_file.data["BG"])
     root.geometry("690x470")
     root.resizable(False, False)
     ui_instance = UI(root)

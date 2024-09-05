@@ -1,8 +1,11 @@
 import random
 import string
 from tkinter import *
+from basics import read_config_file
 
 class Passwords:
+
+
     def __init__(self, size) -> str:
         self.size: int = size
         self.characters: tuple = string.ascii_letters + string.punctuation
@@ -34,6 +37,9 @@ class PasswordWindow:
         self.main = main
 
     def run_password_window(self):
+        fg_text=read_config_file.data["FG"]
+        bg_text=read_config_file.data["BG"]
+        cursor_text = read_config_file.data["CURSOR"]
         # Window
         self.win_pass = Toplevel(self.main)
         self.win_pass.geometry("550x290")
@@ -54,7 +60,7 @@ class PasswordWindow:
         
         # Text widget
         self.text_password = Text(self.win_pass, borderwidth=1, padx=5, pady=5, font=5, yscrollcommand=self.scroll_bar.set, height=10, width=70)
-        self.text_password.config(font=("Helvetica", 9))  # Text font
+        self.text_password.config(font=("Helvetica", 9),fg=fg_text,bg=bg_text,insertbackground=cursor_text)  # Text font
         
         # Get button
         self.button_get_password = Button(self.win_pass, text="Generate", command=lambda: insert_password(self.text_password, int(self.list_box_numbers.get())))

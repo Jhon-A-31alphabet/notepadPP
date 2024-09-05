@@ -8,10 +8,12 @@ import time
 import json
 
 
+
+
 class read_config_file:
     
-     with open('config.json', 'r') as archivo:
-        datos = json.load(archivo)
+     with open('config.json', 'r') as file:
+        data = json.load(file)
     
 
 class theme_conf:
@@ -20,45 +22,37 @@ class theme_conf:
     def darkmode(text,window):
         
 
-        with open('config.json', 'r') as archivo:
-            datos = json.load(archivo)
-            datos['FG'] = 'white'
-            datos['BG'] ='black'
+        with open('config.json', 'r') as file:
+            data = json.load(file)
+            data['FG'] = 'white'
+            data['BG'] ='black'
+            data["CURSOR"]='white'
 
-        with open('config.json', 'w') as archivo:
 
-            json.dump(datos, archivo, indent=4)
+        with open('config.json', 'w') as file:
+
+            json.dump(data, file, indent=4)
         
-        text.config(bg=datos['BG'],fg=datos['FG'],insertbackground="white")
-        window.config(bg=datos['BG'])
+        text.config(bg=data['BG'],fg=data['FG'],insertbackground=data['CURSOR'])
+        window.config(bg=data['BG'])
 
     @staticmethod
     def light_mode(text,window):
         
 
-        with open('config.json', 'r') as archivo:
-            datos = json.load(archivo)
-            datos['FG'] = 'black'
-            datos['BG'] ='white'
+        with open('config.json', 'r') as file:
+            data = json.load(file)
+            data['FG'] = 'black'
+            data['BG'] ='white'
+            data["CURSOR"]='black'
 
-        with open('config.json', 'w') as archivo:
+        with open('config.json', 'w') as file:
 
-            json.dump(datos, archivo, indent=4)
+            json.dump(data, file, indent=4)
         
-        text.config(bg=datos['BG'],fg=datos['FG'],insertbackground="black")
-        window.config(bg=datos['BG'])
+        text.config(bg=data['BG'],fg=data['FG'],insertbackground=data['CURSOR'])
+        window.config(bg=data['BG'])
 
-
-
-
-
-
-            
-
-    
-    
-
-    
 
 
 
