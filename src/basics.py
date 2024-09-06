@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter import font
-from tkinter.colorchooser import askcolor
 from tkinter import messagebox
 from tkinter import ttk
 import time
@@ -84,7 +83,9 @@ def copy_text_to_clipboard(text_widget, master) -> None:
     master.clipboard_append(content)
     master.update()
 
-
 def get_date(text_widget) -> None:
     date = time.strftime("%c")
     text_widget.insert('1.0', f"Date and Time: {date} ")
+
+
+
