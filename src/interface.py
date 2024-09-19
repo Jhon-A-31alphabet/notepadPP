@@ -14,6 +14,7 @@ class UI:
         # Menu Bar
         self.menu_bar = Menu(master)
         master.config(menu=self.menu_bar)
+        
 
         # File Menu
         self.file_menu = Menu(self.menu_bar, tearoff=0)
@@ -23,8 +24,11 @@ class UI:
         self.file_menu.add_command(label="Exit", command=master.quit)
         self.menu_bar.add_cascade(label="File", menu=self.file_menu)
 
+
         # Edit Menu
         self.edit_menu = Menu(self.menu_bar, tearoff=0)
+        self.edit_menu.add_command(label="Date and Time", command=lambda: get_date(self.text_box))
+
         self.edit_menu.add_command(label="Copy", command=lambda: copy_text_to_clipboard(self.text_box, master))
         self.menu_bar.add_cascade(label="Edit", menu=self.edit_menu)
 
@@ -32,12 +36,12 @@ class UI:
         self.view_menu = Menu(self.menu_bar, tearoff=0)
         self.view_menu.add_command(label="Dark Mode", command=lambda:theme_conf.darkmode(self.text_box,master))
         self.view_menu.add_command(label="Light Mode", command=lambda: theme_conf.light_mode(self.text_box, master))
+        
         self.menu_bar.add_cascade(label="Themes", menu=self.view_menu)
 
         # Tools Menu
         self.tools_menu = Menu(self.menu_bar, tearoff=0)
         
-        self.tools_menu.add_command(label="Date and Time", command=lambda: get_date(self.text_box))
         
         self.tools_menu.add_command(label="Random Password", command=lambda: self.password_window.run_password_window())
         
@@ -62,6 +66,7 @@ try:
     root = Tk()
 
     root.title("Pynotepad")
+    
     root.config(bg=read_config_file.data["BG"])
     root.geometry("690x470")
     root.resizable(False, False)

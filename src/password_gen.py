@@ -3,6 +3,8 @@ import string
 from tkinter import *
 from basics import read_config_file
 
+
+
 class Passwords:
 
 
@@ -40,11 +42,15 @@ class PasswordWindow:
         fg_text=read_config_file.data["FG"]
         bg_text=read_config_file.data["BG"]
         cursor_text = read_config_file.data["CURSOR"]
+        background_ = read_config_file.data[ "PASSWORD_GENERATE_WINDOW_BACKGROUND"]
         # Window
         self.win_pass = Toplevel(self.main)
         self.win_pass.geometry("550x290")
+        self.win_pass.config(bg=background_)
         self.win_pass.resizable(False, False)
         self.win_pass.title("Password Generator")
+        self.win_pass.config(bg=background_)
+
         
         # Widgets
         self.label_size = Label(self.win_pass, text="Password Length", font=("Arial", 10))

@@ -26,6 +26,7 @@ class theme_conf:
             data['FG'] = 'white'
             data['BG'] ='black'
             data["CURSOR"]='white'
+            
 
 
         with open('config.json', 'w') as file:
@@ -34,16 +35,21 @@ class theme_conf:
         
         text.config(bg=data['BG'],fg=data['FG'],insertbackground=data['CURSOR'])
         window.config(bg=data['BG'])
+        
+
+
+       
+
 
     @staticmethod
     def light_mode(text,window):
-        
 
         with open('config.json', 'r') as file:
             data = json.load(file)
             data['FG'] = 'black'
             data['BG'] ='white'
             data["CURSOR"]='black'
+            
 
         with open('config.json', 'w') as file:
 
@@ -51,6 +57,8 @@ class theme_conf:
         
         text.config(bg=data['BG'],fg=data['FG'],insertbackground=data['CURSOR'])
         window.config(bg=data['BG'])
+        
+
 
 
 
@@ -58,7 +66,6 @@ class theme_conf:
 
 def save_text_to_file(text_widget: None) -> None:
     file_dialog = filedialog.asksaveasfile(defaultextension=".txt", filetypes=[("textfile", ".txt")])
-    file_path = f"{file_dialog}.txt"
     file_text = text_widget.get(1.0, "end-1c")
     file_dialog.write(file_text)
     file_dialog.close()
