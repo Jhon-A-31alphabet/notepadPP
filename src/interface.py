@@ -19,7 +19,9 @@ class UI:
         self.file_menu = Menu(self.menu_bar, tearoff=0)
         self.file_menu.add_command(label="Open", command=lambda: open_file(self.text_box))
         self.file_menu.add_separator()
-        self.file_menu.add_command(label="Save", command=lambda: save_text_to_file(self.text_box))
+        self.file_menu.add_command(label="Save as", command=lambda: save_text_to_file(self.text_box))
+        self.file_menu.add_command(label="Save", command=lambda: save(self.text_box))
+
         self.file_menu.add_command(label="Exit", command=master.quit)
         self.menu_bar.add_cascade(label="File", menu=self.file_menu)
 

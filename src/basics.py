@@ -1,12 +1,14 @@
 from tkinter import *
-from tkinter import filedialog
 from tkinter import font
 from tkinter import messagebox
 from tkinter import ttk
+from tkinter import END, filedialog
 import time
 import json
 
+import os
 
+save_current_file = None   #  this variable read the current file
 
 
 class read_config_file:
@@ -65,18 +67,44 @@ class theme_conf:
 
 
 def save_text_to_file(text_widget: None) -> None:
-    file_dialog = filedialog.asksaveasfile(defaultextension=".txt", filetypes=[("textfile", ".txt")])
-    file_text = text_widget.get(1.0, "end-1c")
-    file_dialog.write(file_text)
-    file_dialog.close()
+    #save as  name.txt  the current file
+    try:
+        
+        file_dialog = filedialog.asksaveasfile(defaultextension=".txt", filetypes=[("textfile", ".txt")])
+        file_text = text_widget.get(1.0, "end-1c")
+        file_dialog.write(file_text)
+        file_dialog.close()
 
+    except:
+        messagebox.showinfo("Iformation", "you did not save anything") 
+    
+    
+
+def save(text_widget:None):
+    #aplied changes for the current file
+    if save_current_file:
+        content = text_widget.get(1.0,END)
+        with open(save_current_file,"w") as file:
+            file.write(str(content))
+    else:
+        save_text_to_file(text_widget)    # else save as
+    
+        
+    
 
 
 
 def open_file(text_widget) -> None:
+    
+    global save_current_file
     file_path = filedialog.askopenfilename()
+    
     if file_path:
         if file_path.endswith(".txt"):
+            
+            save_current_file = str(os.path.abspath(file_path))  #current file value if the user selected a file........
+            
+            
             with open(file_path, 'r') as file:
                 content = file.read()
                 text_widget.delete('1.0', END)
