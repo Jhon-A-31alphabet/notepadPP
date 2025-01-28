@@ -50,7 +50,7 @@ This project is an interactive notepad developed with Tkinter that goes beyond b
 ## Screenshots
 
 
-![Demo](use_demostratrion.gif)
+![Demo](use_demostration.gif)
 
 
 ## System Requirements
