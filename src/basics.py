@@ -1,12 +1,11 @@
-from tkinter import *
-from tkinter import font
 from tkinter import messagebox
-from tkinter import ttk
+from tkinter import Tk
 from tkinter import END, filedialog
 import time
 import json
-
 import os
+import base64
+
 
 save_current_file = None   #  this variable read the current file
 
@@ -118,9 +117,32 @@ def copy_text_to_clipboard(text_widget, master) -> None:
     master.clipboard_append(content)
     master.update()
 
+
+
 def get_date(text_widget) -> None:
     date = time.strftime("%c")
     text_widget.insert('1.0', f"Date and Time: {date} ")
+
+
+
+
+class enconding_base_64:
+
+    @staticmethod
+    def encode_text(text_on_widget: None) -> None:
+        text = text_on_widget.get(1.0,END)
+        encoded = base64.b64encode(text.encode("ascii"))
+        text_on_widget.delete("1.0","end")
+        text_on_widget.insert(1.0,encoded)
+
+    @staticmethod
+    def decode_text(text_on_widget: None) -> None:
+        text = text_on_widget.get(1.0,END)
+        decoded = base64.b64decode(text.encode("ascii"))
+        text_on_widget.delete("1.0","end")
+        text_on_widget.insert(1.0,decoded)
+    
+    
 
 
 

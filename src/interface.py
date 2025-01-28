@@ -45,7 +45,10 @@ class UI:
         
         
         self.tools_menu.add_command(label="Random Password", command=lambda: self.password_window.run_password_window())
-        
+        self.tools_menu.add_command(label="Encode text", command=lambda: enconding_base_64.encode_text(self.text_box))
+        self.tools_menu.add_command(label="Decode text", command=lambda: enconding_base_64.decode_text(self.text_box))
+
+
         self.menu_bar.add_cascade(label="Tools", menu=self.tools_menu)
 
         # Text Box
