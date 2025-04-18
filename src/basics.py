@@ -5,7 +5,7 @@ import time
 import json
 import os
 import base64
-
+import string
 
 save_current_file = None   #  this variable read the current file
 
@@ -93,7 +93,7 @@ def save(text_widget:None):
 
 
 
-def open_file(text_widget) -> None:
+def open_file(text_widget,master) -> None:
     
     global save_current_file
     file_path = filedialog.askopenfilename()
@@ -108,6 +108,7 @@ def open_file(text_widget) -> None:
                 content = file.read()
                 text_widget.delete('1.0', END)
                 text_widget.insert('1.0', content)
+    master.title(str(save_current_file))
 
 
 def copy_text_to_clipboard(text_widget, master) -> None:

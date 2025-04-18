@@ -8,7 +8,9 @@ from basics import *
 class UI:
     
     def __init__(self, master):
+
         self.password_window = password_gen.PasswordWindow(master)
+
 
         # Menu Bar
         self.menu_bar = Menu(master)
@@ -17,7 +19,7 @@ class UI:
 
         # File Menu
         self.file_menu = Menu(self.menu_bar, tearoff=0)
-        self.file_menu.add_command(label="Open", command=lambda: open_file(self.text_box))
+        self.file_menu.add_command(label="Open", command=lambda: open_file(self.text_box,master))
         self.file_menu.add_separator()
         self.file_menu.add_command(label="Save as", command=lambda: save_text_to_file(self.text_box))
         self.file_menu.add_command(label="Save", command=lambda: save(self.text_box))
@@ -69,7 +71,6 @@ class UI:
 try:
     root = Tk()
 
-    root.title("Pynotepad")
     
     root.config(bg=read_config_file.data["BG"])
     root.geometry("690x470")
