@@ -1,6 +1,6 @@
 {
-    "BG": "white",
-    "FG": "black",
-    "CURSOR": "black",
+    "BG": "black",
+    "FG": "white",
+    "CURSOR": "white",
     "PASSWORD_GENERATE_WINDOW_BACKGROUND": "#1F1E30"
 }

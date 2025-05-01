@@ -1,7 +1,7 @@
 from tkinter import *
 import password_gen as password_gen
 from basics import *
-
+from calendar_1 import calendar__
 
 
 
@@ -10,6 +10,7 @@ class UI:
     def __init__(self, master):
 
         self.password_window = password_gen.PasswordWindow(master)
+        self._calendar_ = calendar__(master)
 
 
         # Menu Bar
@@ -49,6 +50,7 @@ class UI:
         self.tools_menu.add_command(label="Random Password", command=lambda: self.password_window.run_password_window())
         self.tools_menu.add_command(label="Encode text", command=lambda: enconding_base_64.encode_text(self.text_box))
         self.tools_menu.add_command(label="Decode text", command=lambda: enconding_base_64.decode_text(self.text_box))
+        self.tools_menu.add_command(label="Calendar", command=lambda:self._calendar_.calendarwindow())
 
 
         self.menu_bar.add_cascade(label="Tools", menu=self.tools_menu)
@@ -76,6 +78,10 @@ try:
     root.geometry("690x470")
     root.resizable(False, False)
     ui_instance = UI(root)
+    if save_current_file ==None:
+        root.title("no file opened")
+    else:
+        root.title(save_current_file)
 
 except Exception as e:
     root.showerror("Invalid", f"There was an error: {e}")

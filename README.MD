@@ -13,7 +13,7 @@ An interactive notepad with additional features for managing passwords, display 
     - [Theme](#theme)
     - [Tools](#tools)
   - [Screenshots](#screenshots)
-  - [System Requirements](#system-requirements)
+  - [Requirements](#requirements)
   - [Contribution](#contribution)
   - [License](#license)
 
@@ -53,9 +53,10 @@ This project is an interactive notepad developed with Tkinter that goes beyond b
 ![Demo](use_demostration.gif)
 
 
-## System Requirements
+##  Requirements
 
-You don't need external libraries to execute this project. It was made only with standard libraries (Python's built-in modules).
+tkcalendar
+tkinter
 
 ## Contribution
 
