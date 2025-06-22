@@ -1,6 +1,6 @@
 # Interactive Notepad
 
-An interactive notepad with additional features for managing passwords, display modes, and more.
+An interactive and minimalist notepad with additional features like generating passwords, watch the calendar, encode and decode text.
 
 ## Table of Contents
 
